@@ -1,0 +1,8 @@
+#search-input {
+	/* background: url(images/search-icon.png) no-repeat 150px; */
+	width: 200px;
+	padding: 10px;
+	border-radius: 15px;
+	border: 1px solid lightgray;
+	outline: none;
+}
