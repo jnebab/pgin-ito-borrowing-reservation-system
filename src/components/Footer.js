@@ -2,10 +2,8 @@ import React from 'react'
 
 const Footer = () => {
 	return (
-		<div>
-			<h1>This is the footer</h1>
-		</div>
-	);
-};
+		<footer>&copy;PGIN-ITO 2018. All rights reserved.</footer>
+	)
+}
 
 export default Footer

@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Dashboard = () => {
+const Dashboard = props => {
 	return (
 		<div>
-			<h1>This will hold the main content view</h1>
+			<h1>This will hold the dashboard</h1>
 		</div>
 	);
 };

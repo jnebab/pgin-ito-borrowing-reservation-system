@@ -58,19 +58,20 @@ const Header = props => {
 				<AppBar position="static">
 				<Toolbar>
 					<IconButton
-					className={classes.menuButton}
-					color="inherit"
-					aria-label="Open drawer"
+						className={classes.menuButton}
+						color="inherit"
+						aria-label="Open drawer"
+						onClick={props.toggleDrawer}
 					>
-					<MenuIcon />
+						<MenuIcon />
 					</IconButton>
 					<Typography
-					className={classes.title}
-					variant="h6"
-					color="inherit"
-					noWrap
+						className={classes.title}
+						variant="h6"
+						color="inherit"
+						noWrap
 					>
-					PGIN-ITO B&R System
+						PGIN-ITO B&R System
 					</Typography>
 					<div className={classes.search}>
 					<div className={classes.searchIcon}>

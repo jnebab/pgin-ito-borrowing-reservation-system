@@ -1,0 +1,27 @@
+.MuiList-padding-152 {
+	padding-top: 50px !important;
+}
+
+main {
+	height: 100vh;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	text-align: center;
+	flex-direction: column;
+}
+
+.sidebar-links {
+	text-decoration: none;
+}
+
+.MuiListItem-button-164:focus-within {
+	background-color: darkgrey;
+	padding: 15px;
+
+}
+
+footer {
+	display: flex;
+	justify-content: center;
+}
