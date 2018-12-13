@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Paper from '@material-ui/core/Paper';
 
-const Dashboard = props => {
+const Dashboard = () => {
 	return (
 		<div>
-			<h1>This will hold the dashboard</h1>
+			
 		</div>
 	);
 };
 
-export default Dashboard
+export default Dashboard;

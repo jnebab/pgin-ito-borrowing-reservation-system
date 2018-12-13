@@ -1,9 +1,10 @@
 import React from 'react'
+import Login from './Login'
 
 const BorrowedEquipments = props => {
 	return (
 		<div>
-			<h1>This presents the Borrowed Equipments</h1>
+			{props.auth ? <h1>Borrowed Equipments here</h1> : <Login handleSubmit={props.handleSubmit} />}
 		</div>
 	)
 }
