@@ -1,0 +1,147 @@
+{
+	"users": {
+		"user1": {
+			"name": "Ivan Nebab",
+			"office": "IT Office",
+			"email": "nebab.ivan@pgin.gov.ph",
+			"password": "userpass123",
+			"type": "basic"
+		},
+		"user2": {
+			"name": "Jason Bunnao",
+			"office": "Tourism Office",
+			"email": "bunnaojason@ilocostourism.com.ph",
+			"password": "qwerty123",
+			"type": "basic"
+		},
+		"user3": {
+			"name": "Karen Rai",
+			"office": "Session Hall",
+			"email": "raiii.karen@pgin.gov.ph",
+			"password": "krai123",
+			"type": "basic"
+		},
+		"admin1": {
+			"name": "Erwin Maximo",
+			"office": "IT Office",
+			"email": "maximo.erwin@pgin.gov.ph",
+			"password": "adminpass123",
+			"type": "administrator"
+		}
+	},
+	"equipments": {
+		"prox18": {
+			"eqbrand": "Epson EB-X18",
+			"eqmodel": "Not Available",
+			"eqserial": "TU2K3Y01668",
+			"eqstatus": "available",
+			"eqtype": "Projector",
+			"eqstatus": "available"
+		},
+		"pros31": {
+			"eqbrand": "Epson EB-S31",
+			"eqmodel": "Not Available",
+			"eqserial": "Not Available",
+			"eqtype": "Projector",
+			"eqstatus": "available"
+		},
+		"pros41a": {
+			"eqbrand": "Epson EB-S41",
+			"eqmodel": "Not Available",
+			"eqserial": "X4HL7801437",
+			"eqtype": "Projector",
+			"eqstatus": "available"
+		},
+		"pros41b": {
+			"eqbrand": "Epson EB-S41",
+			"eqmodel": "Not Available",
+			"eqserial": "X4HL7801437",
+			"eqtype": "Projector",
+			"eqstatus": "available"
+		},
+		"pro4650": {
+			"eqbrand": "Epson EB-4650",
+			"eqmodel": "H546C",
+			"eqserial": "TLXF420001L",
+			"eqtype": "Projector",
+			"eqstatus": "on request"
+		},
+		"pro4650b": {
+			"eqbrand": "Epson EB-4650",
+			"eqmodel": "H546C",
+			"eqserial": "TLXF430005L",
+			"eqtype": "Projector",
+			"eqstatus": "available"
+		},
+		"gtt25": {
+			"eqbrand": "Arrow T-25",
+			"eqmodel": "Not Available",
+			"eqserial": "Not Available",
+			"eqtype": "Gun Tucker",
+			"eqstatus": "available"
+		},
+		"prosc001": {
+			"eqbrand": "Acsys",
+			"eqmodel": "Not Available",
+			"eqserial": "Not Available",
+			"eqtype": "Projector Screen",
+			"eqstatus": "available"
+		},
+		"prosc002a": {
+			"eqbrand": "Meki",
+			"eqmodel": "Not Available",
+			"eqserial": "Not Available",
+			"eqtype": "Projector Screen",
+			"eqstatus": "available"
+		},
+		"prosc002b": {
+			"eqbrand": "Meki",
+			"eqmodel": "Not Available",
+			"eqserial": "Not Available",
+			"eqtype": "Projector Screen",
+			"eqstatus": "not available"
+		}
+	},
+	"borrowed-equipments": {
+		"user1": {
+			"borrow-history": {
+				"prosc002b": {
+					"equipment": "Meki Projector Screen",
+					"date-of-use": "December 16, 2018",
+					"purpose": "Christmas Program",
+					"attachments": "bag, VGA, powercord",
+					"date-issued": "December 14, 2016",
+					"issued-by": "Erwin Maximo",
+					"isReturn": false,
+					"date-return": "",
+					"received-by": ""
+				}
+			}
+		},
+		"user2": {
+			"return-history": {
+				"gtt25": {
+					"equipment": "Arrow T-25 Gun Tucker",
+					"date-of-use": "December 12, 2018",
+					"purpose": "Christmas Decoration",
+					"attachments": "none",
+					"date-issued": "December 12, 2016",
+					"issued-by": "Erwin Maximo",
+					"isReturn": true,
+					"date-return": "December 12, 2016",
+					"received-by": "Erwin Maximo"
+				}
+			} 
+		}
+	},
+	"reservations": {
+		"user3": {
+			"pro4650": {
+				"equipment": "Arrow T-25 Gun Tucker",
+					"date-of-use": "December 12, 2018",
+					"purpose": "Christmas Decoration",
+					"request-status": "pending"
+			}
+		}
+	}
+}

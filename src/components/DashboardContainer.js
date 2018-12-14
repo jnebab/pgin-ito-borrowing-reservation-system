@@ -5,7 +5,8 @@ import Dashboard from './Dashboard'
 const DashboardContainer = props => {
 	return (
 		<div>
-			{props.auth ? <Dashboard /> : <Login handleSubmit={props.handleSubmit} />} 
+			{/* {props.auth ? <Dashboard /> : <Login handleSubmit={props.handleSubmit} />}  */}
+			<Dashboard />
 		</div>
 	);
 };

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { BrowserRouter, Link, Route } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import { Drawer, List, ListItem, AppBar, CssBaseline, Toolbar, Typography,
-		Divider, IconButton, ListItemText, ListItemIcon } from '@material-ui/core'
+		Divider, IconButton, ListItemText, ListItemIcon, Button } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import SearchIcon from '@material-ui/icons/Search'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
@@ -118,12 +118,12 @@ class App extends Component {
 		<Fragment>
 			<List>
 				{routes.map(({name, icon, path}, index) => (
-					<ListItem button key={index}>
-						{icon} 
-						<Link to={path} className="sidebar-links">
+					<Link to={path} className="sidebar-links">
+						<ListItem button key={index}>
+							{icon} 
 							<ListItemText primary={name} />
-						</Link>
-					</ListItem>
+						</ListItem>
+					</Link>
 				))}
 			</List>
 		</Fragment>
@@ -158,6 +158,9 @@ class App extends Component {
 				>
 				PGIN-ITO Borrowing
 				</Typography>
+				<Button color="default" variant="raised" onClick={this.handleClick}>
+					{this.state.auth ? "Logout" : "Login"}
+				</Button>
 			</Toolbar>
 		</AppBar>
 		<Drawer
