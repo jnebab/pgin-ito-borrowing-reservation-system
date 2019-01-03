@@ -1,14 +1,12 @@
 import React from 'react'
-import Login from './Login'
 import Dashboard from './Dashboard'
 
 const DashboardContainer = props => {
 	return (
 		<div>
-			{/* {props.auth ? <Dashboard /> : <Login handleSubmit={props.handleSubmit} />}  */}
-			<Dashboard />
+			<Dashboard itemList={props.itemList}/>
 		</div>
-	);
-};
+	)
+}
 
 export default DashboardContainer

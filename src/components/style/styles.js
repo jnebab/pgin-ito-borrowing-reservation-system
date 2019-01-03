@@ -1,5 +1,3 @@
-import { fade } from '@material-ui/core/styles/colorManipulator';
-
 const drawerWidth = 250;
 
 const styles = theme => ({

@@ -1,10 +1,13 @@
 import React from 'react'
-import { Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core'
 
-const RecentlyBorrowed = () => {
+import DashboardList from './DashboardList'
+
+const RecentlyBorrowed = props => {
 	return (
 		<div>
 			<Typography>Recently Borrowed</Typography>
+			<DashboardList itemList={props.itemList}/>
 		</div>
 	);
 };

@@ -18,7 +18,7 @@ class SignIn extends Component {
 	formSubmit = e => {
 		e.preventDefault()
 		const data = new FormData(e.target)
-		this.props.handleSubmit(data)
+		this.props.handleSubmit(e, data)
 	}
 
 	render() {

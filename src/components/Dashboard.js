@@ -1,11 +1,10 @@
 import React from 'react'
-import { Paper, Grid, Typography } from '@material-ui/core'
+import { Paper, Grid } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
 
 import RecentlyBorrowed from './dashboardcomponents/RecentlyBorrowed'
 import RecentlyReturned from './dashboardcomponents/RecentlyReturned'
 import ReservationRequests from './dashboardcomponents/ReservationRequests'
-import CalendarSchedule from './dashboardcomponents/CalendarSchedule'
 
 import styles from './style/styles'
 
@@ -17,17 +16,17 @@ const Dashboard = props => {
 			<Grid container spacing={24}>
 				<Grid item xs={12} sm={12} md={4} lg={4}>
 					<Paper className={classes.dbPaper}>
-						<RecentlyBorrowed />
+						<RecentlyBorrowed  itemList={props.itemList}/>
 					</Paper>
 				</Grid>
 				<Grid item xs={12} sm={12} md={4} lg={4}>
 					<Paper className={classes.dbPaper}>
-						<RecentlyReturned />
+						<RecentlyReturned itemList={props.itemList} />
 					</Paper>
 				</Grid>
 				<Grid item xs={12} sm={12} md={4} lg={4}>
 					<Paper className={classes.dbPaper}>
-						<ReservationRequests />
+						<ReservationRequests itemList={props.itemList}/>
 					</Paper>
 				</Grid>
 			</Grid>
