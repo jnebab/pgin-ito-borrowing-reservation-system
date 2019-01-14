@@ -7,10 +7,11 @@ import styles from './components/style/styles'
 
 import MainApp from './components/MainApp'
 import firebase from './components/Firestore'
+import { Provider } from './Context'
 
 class App extends Component {
 	state = {
-		auth: false,
+		auth: true,
 		open: false,
 		email: '',
 		password: '',
@@ -57,23 +58,29 @@ class App extends Component {
 	// 			})
 	// 		})
 	// }
+	
+	getContext = () => ({
+		auth: this.state.auth,
+		open: this.state.open,
+		handleClick: this.handleClick,
+		handleSubmit: this.handleSubmit,
+		handleDrawerOpen: this.handleDrawerOpen,
+		handleDrawerClose: this.handleDrawerClose
+	})
 
 	render() {
-	const { classes } = this.props
+		const { classes } = this.props
 
-	return (
-		<BrowserRouter>
-			<div className={classes.root}>
-					<MainApp 
-						auth={this.state.auth}
-						open={this.state.open}
-						handleDrawerOpen={this.handleDrawerOpen}
-						handleDrawerClose={this.handleDrawerClose}
-						handleClick={this.handleClick}
-					/>
-			</div>
-		</BrowserRouter>
-	)}
+		return (
+			<Provider value={this.getContext()}>
+				<BrowserRouter>
+					<div className={classes.root}>
+							<MainApp />
+					</div>
+				</BrowserRouter>
+			</Provider>
+		)
+	}
 }
 
 App.propTypes = {

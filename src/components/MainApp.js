@@ -9,29 +9,31 @@ import { AppBar, Drawer, CssBaseline, Toolbar, Typography,
 	Divider, IconButton, Button, List, ListItem, ListItemText } from '@material-ui/core'
 import routes from '../Routes'
 import Footer from './Footer'
+import { withContext } from '../Context'
 
 import styles from './style/styles'
 
-export default withStyles(styles)(props => {
-	const { classes, auth, open } = props
+class MainApp extends React.Component {
+	render() {
+		const { classes, auth, open, handleClick, handleDrawerOpen, handleDrawerClose } = this.props
 
-	const drawer = (
-		<Fragment>
-			<List>
-				{routes.map(({name, icon, path}, index) => (
-					<Link to={path} key={index} className="sidebar-links">
-						<ListItem button>
-							{icon}
-							<ListItemText key={index} primary={name} />
-						</ListItem>
-					</Link>
-				))}
-			</List>
-		</Fragment>
-	)
+		const drawer = (
+			<Fragment>
+				<List>
+					{routes.map(({name, icon, path}, index) => (
+						<Link to={path} key={index} className="sidebar-links">
+							<ListItem button>
+								{icon}
+								<ListItemText key={index} primary={name} />
+							</ListItem>
+						</Link>
+					))}
+				</List>
+			</Fragment>
+		)
 
-	return (
-		<React.Fragment className={classes.root}>
+		return (
+			<Fragment >
 			<CssBaseline />
 			<AppBar
 				position="absolute"
@@ -41,7 +43,7 @@ export default withStyles(styles)(props => {
 				<IconButton
 					color="inherit"
 					aria-label="Open drawer"
-					onClick={props.handleDrawerOpen}
+					onClick={handleDrawerOpen}
 					className={classNames(
 					classes.menuButton,
 					open && classes.menuButtonHidden,
@@ -56,10 +58,10 @@ export default withStyles(styles)(props => {
 					noWrap
 					className={classes.title}
 				>
-				BaRITO of PGIN - Borrowing and Reservation System for the Information Technology Office
+					BaRITO of PGIN - Borrowing and Reservation System for the Information Technology Office
 				</Typography>
 				<SearchIcon />
-				<Button color="default" variant="contained" onClick={props.handleClick}>
+				<Button color="default" variant="contained" onClick={handleClick}>
 					{auth ? "Logout" : "Login"}
 				</Button>
 				
@@ -73,7 +75,7 @@ export default withStyles(styles)(props => {
 				open={open}
 			>
 				<div className={classes.toolbarIcon}>
-				<IconButton onClick={props.handleDrawerClose}>
+				<IconButton onClick={handleDrawerClose}>
 					<ChevronLeftIcon />
 				</IconButton>
 				</div>
@@ -93,6 +95,9 @@ export default withStyles(styles)(props => {
 				</div>
 				<Footer />
 			</main>
-		</React.Fragment>
-	)
-})
+			</Fragment>
+		)
+	}
+}
+
+export default withContext(withStyles(styles)(MainApp))

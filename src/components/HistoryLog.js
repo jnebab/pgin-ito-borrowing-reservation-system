@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import SignIn from './SignIn'
+import { Consumer } from '../Context'
 
 export default props => {
 	return (
-		<div>
-			{props.auth ? <h1>This will provide the History Logs</h1> : <SignIn handleSubmit={props.handleSubmit} />}
-		</div>
+		<Consumer>
+			{({auth}) => 
+				<Fragment> 
+					{auth ? <h1>This will provide the History Logs</h1> : <SignIn />} 
+				</Fragment>
+			}
+		</Consumer>
+		
 	)
 }

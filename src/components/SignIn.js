@@ -10,19 +10,21 @@ import LockIcon from '@material-ui/icons/LockOutlined'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import withStyles from '@material-ui/core/styles/withStyles'
+import { withContext } from '../Context'
 
 import styles from './style/styles'
 
 class SignIn extends Component {
 
 	formSubmit = e => {
+		const { handleSubmit } = this.props
 		e.preventDefault()
 		const data = new FormData(e.target)
-		this.props.handleSubmit(e, data)
+		handleSubmit(e, data)
 	}
 
 	render() {
-		const {classes} = this.props
+		const { classes } = this.props
 
 		return (
 			<main className={classes.main}>
@@ -60,7 +62,7 @@ class SignIn extends Component {
 }
 
 SignIn.propTypes = {
-  classes: PropTypes.object.isRequired,
+	classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(SignIn)
+export default withContext(withStyles(styles)(SignIn))
