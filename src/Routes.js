@@ -24,49 +24,49 @@ const routes = [
 		path: '/',
 		exact: true,
 		icon: <ListItemIcon><DashboardIcon /></ListItemIcon>,
-		main: () => <DashboardContainer auth={this.state.auth} handleSubmit={this.handleSubmit} itemList={this.state.itemList} />
+		main: () => <DashboardContainer />
 	},
 	{
 		name: 'Borrowed Equipments',
 		path: '/borrowed-equipments',
 		icon: <ListItemIcon><AccessAlarmIcon /></ListItemIcon>,
-		main: () => <BorrowedEquipmentContainer auth={this.state.auth} handleSubmit={this.handleSubmit}/>
+		main: () => <BorrowedEquipmentContainer />
 	},
 	{
 		name: 'Available Equipments',
 		path: '/available-equipments',
 		icon: <ListItemIcon><CheckCircle /></ListItemIcon>,
-		main: () => <AvailableEquipments auth={this.state.auth} handleSubmit={this.handleSubmit}/>
+		main: () => <AvailableEquipments />
 	},
 	{
 		name: 'Borrow Form',
 		path: '/borrow-form',
 		icon: <ListItemIcon><Assignment /></ListItemIcon>,
-		main: () => <BorrowForm auth={this.state.auth} handleSubmit={this.handleSubmit}/>
+		main: () => <BorrowForm />
 	},
 	{
 		name: 'Return Form',
 		path: '/return-form',
 		icon: <ListItemIcon><CompareArrows /></ListItemIcon>,
-		main: () => <ReturnForm auth={this.state.auth} handleSubmit={this.handleSubmit}/>
+		main: () => <ReturnForm />
 	},
 	{
 		name: 'Reservation Form',
 		path: '/reservation-form',
 		icon: <ListItemIcon><AssignmentTurnedIn /></ListItemIcon>,
-		main: () => <ReservationForm auth={this.state.auth} handleSubmit={this.handleSubmit}/>
+		main: () => <ReservationForm />
 	},
 	{
 		name: 'Calendar',
 		path: '/calendar',
 		icon: <ListItemIcon><CalendarToday /></ListItemIcon>,
-		main: () => <Calendar auth={this.state.auth} handleSubmit={this.handleSubmit}/>
+		main: () => <Calendar />
 	},
 	{
 		name: 'History Log',
 		path: '/history-log',
 		icon: <ListItemIcon><History /></ListItemIcon>,
-		main: () => <HistoryLog auth={this.state.auth} handleSubmit={this.handleSubmit}/>
+		main: () => <HistoryLog />
 	}
 ]
 

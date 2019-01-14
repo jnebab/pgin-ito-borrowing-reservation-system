@@ -1,11 +1,9 @@
 import React from 'react'
 
-const BorrowedEquipments = props => {
+export default props => {
 	return (
 		<div>
 			<p>Borrowed Equipments here.</p>
 		</div>
 	)
 }
-
-export default BorrowedEquipments

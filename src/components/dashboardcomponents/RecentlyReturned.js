@@ -3,7 +3,7 @@ import { Typography } from '@material-ui/core'
 
 import DashboardList from './DashboardList'
 
-const RecentlyReturned = props => {
+export default props => {
 	return (
 		<div>
 			<Typography>Recently Returned</Typography>
@@ -11,5 +11,3 @@ const RecentlyReturned = props => {
 		</div>
 	)
 }
-
-export default RecentlyReturned

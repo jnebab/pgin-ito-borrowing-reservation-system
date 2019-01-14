@@ -1,12 +1,10 @@
 import React from 'react'
-import Login from './Login'
+import SignIn from './SignIn'
 
-const ReservationForm = props => {
+export default props => {
 	return (
 		<div>
-			{props.auth ? <h1>This will provide the Reservation Form</h1> : <Login handleSubmit={props.handleSubmit} />}
+			{props.auth ? <h1>This will provide the Reservation Form</h1> : <SignIn handleSubmit={props.handleSubmit} />}
 		</div>
 	)
 }
-
-export default ReservationForm

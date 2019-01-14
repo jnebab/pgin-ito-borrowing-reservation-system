@@ -1,12 +1,10 @@
 import React from 'react'
-import Login from './Login'
+import SignIn from './SignIn'
 
-const BorrowForm = props => {
+export default props => {
 	return (
 		<div>
-			{props.auth ? <h1>This will provide the Borrow Form</h1> : <Login handleSubmit={props.handleSubmit} />}
+			{props.auth ? <h1>This will provide the Borrow Form</h1> : <SignIn handleSubmit={props.handleSubmit} />}
 		</div>
 	)
 }
-
-export default BorrowForm

@@ -8,7 +8,7 @@ import ReservationRequests from './dashboardcomponents/ReservationRequests'
 
 import styles from './style/styles'
 
-const Dashboard = props => {
+export default withStyles(styles)(props => {
 	const { classes } = props
 
 	return (
@@ -32,6 +32,4 @@ const Dashboard = props => {
 			</Grid>
 		</div>
 	)
-}
-
-export default withStyles(styles)(Dashboard)
+})

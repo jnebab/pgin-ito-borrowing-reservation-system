@@ -26,8 +26,8 @@ class SignIn extends Component {
 
 		return (
 			<main className={classes.main}>
-			  <CssBaseline />
-			  <Paper className={classes.paper}>
+				<CssBaseline />
+				<Paper className={classes.paper}>
 					<Avatar className={classes.avatar}>
 						<LockIcon />
 					</Avatar>
@@ -56,7 +56,7 @@ class SignIn extends Component {
 				</Paper>
 			</main>
 		)
-	} 
+	}
 }
 
 SignIn.propTypes = {

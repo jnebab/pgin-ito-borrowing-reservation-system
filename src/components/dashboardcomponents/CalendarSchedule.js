@@ -1,11 +1,9 @@
 import React from 'react'
 
-const CalendarSchedule = () => {
+export default () => {
 	return (
 		<div>
 			<p>calendar view</p>
 		</div>
-	);
-};
-
-export default CalendarSchedule
+	)
+}
