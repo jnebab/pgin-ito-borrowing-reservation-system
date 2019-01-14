@@ -56,7 +56,7 @@ export default withStyles(styles)(props => {
 					noWrap
 					className={classes.title}
 				>
-				PGIN-ITO Borrowing
+				BaRITO of PGIN - Borrowing and Reservation System for the Information Technology Office
 				</Typography>
 				<SearchIcon />
 				<Button color="default" variant="contained" onClick={props.handleClick}>
