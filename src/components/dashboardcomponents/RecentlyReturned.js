@@ -6,8 +6,8 @@ import DashboardList from './DashboardList'
 export default props => {
 	return (
 		<div>
-			<Typography>Recently Returned</Typography>
-			<DashboardList itemList={props.itemList}/>
+			<Typography variant='subheading'>Recently Returned</Typography>
+			<DashboardList isReturn/>
 		</div>
 	)
 }

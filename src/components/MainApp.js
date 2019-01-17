@@ -3,7 +3,6 @@ import { Link, Route } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import classNames from 'classnames'
 import MenuIcon from '@material-ui/icons/Menu'
-import SearchIcon from '@material-ui/icons/Search'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import { AppBar, Drawer, CssBaseline, Toolbar, Typography,
 	Divider, IconButton, Button, List, ListItem, ListItemText } from '@material-ui/core'
@@ -60,11 +59,7 @@ class MainApp extends React.Component {
 				>
 					BaRITO of PGIN - Borrowing and Reservation System for the Information Technology Office
 				</Typography>
-				<SearchIcon />
-				<Button color="default" variant="contained" onClick={handleClick}>
-					{auth ? "Logout" : "Login"}
-				</Button>
-				
+				{auth && <Button color="default" variant="contained" onClick={handleClick}> Logout </Button>}
 			</Toolbar>
 			</AppBar>
 			<Drawer

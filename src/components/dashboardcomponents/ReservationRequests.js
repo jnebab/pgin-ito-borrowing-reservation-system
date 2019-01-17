@@ -1,13 +1,15 @@
 import React from 'react'
-import { Typography } from '@material-ui/core'
+import { Typography, Button } from '@material-ui/core'
 
 import DashboardList from './DashboardList'
 
 export default props => {
 	return (
 		<div>
-			<Typography>Reservation Requests</Typography>
-			<DashboardList itemList={props.itemList}/>
+			<Typography variant='subheading'>Reservation Requests</Typography>
+			<DashboardList isReserve />
+			<Button variant='outlined'>Accept</Button>
+			<Button variant='outlined'>Decline</Button>
 		</div>
 	)
 }
