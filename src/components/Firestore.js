@@ -1,12 +1,12 @@
 import firebase from 'firebase'
 
-const config = {
-	apiKey: "AIzaSyASrnLmFcLWt9bSetRP1ynNONV7cV3fmzE",
-	authDomain: "pgin-ito-web-app.firebaseapp.com",
-	databaseURL: "https://pgin-ito-web-app.firebaseio.com",
-	projectId: "pgin-ito-web-app",
-	storageBucket: "pgin-ito-web-app.appspot.com",
-	messagingSenderId: "270793553710"
+var config = {
+	apiKey: "AIzaSyC-ReHLnKrmKfI_xSdz-OpfsJxMVB-Vjxo",
+	authDomain: "barito-pgin.firebaseapp.com",
+	databaseURL: "https://barito-pgin.firebaseio.com",
+	projectId: "barito-pgin",
+	storageBucket: "barito-pgin.appspot.com",
+	messagingSenderId: "875124099252"
 }
 firebase.initializeApp(config)
 
