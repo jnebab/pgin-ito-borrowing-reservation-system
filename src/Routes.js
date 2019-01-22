@@ -11,8 +11,8 @@ import History from '@material-ui/icons/History'
 
 import DashboardContainer from './components/DashboardContainer'
 import AvailableEquipments from './components/AvailableEquipments'
-import BorrowedEquipmentContainer from './components/BorrowedEquipmentContainer'
-import BorrowForm from './components/BorrowForm'
+import BorrowedEquipmentsContainer from './components/BorrowedEquipmentsContainer'
+import BorrowingContainer from './components/BorrowingContainer'
 import ReturnForm from './components/ReturnForm'
 import ReservationForm from './components/ReservationForm'
 import Calendar from './components/Calendar'
@@ -30,7 +30,7 @@ const routes = [
 		name: 'Borrowed Equipments',
 		path: '/borrowed-equipments',
 		icon: <ListItemIcon><AccessAlarmIcon /></ListItemIcon>,
-		main: () => <BorrowedEquipmentContainer />
+		main: () => <BorrowedEquipmentsContainer />
 	},
 	{
 		name: 'Available Equipments',
@@ -42,7 +42,7 @@ const routes = [
 		name: 'Borrow Form',
 		path: '/borrow-form',
 		icon: <ListItemIcon><Assignment /></ListItemIcon>,
-		main: () => <BorrowForm />
+		main: () => <BorrowingContainer />
 	},
 	{
 		name: 'Return Form',

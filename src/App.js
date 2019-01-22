@@ -13,9 +13,13 @@ class App extends Component {
 	state = {
 		auth: true,
 		open: false,
+		itemList: {},
 		email: '',
 		password: '',
-		itemList: {}
+		dateOfUse: '',
+		purpose: '',
+		attachments: '',
+		historyLogs: []
 	}
 
 	handleDrawerOpen = () => {
@@ -48,6 +52,18 @@ class App extends Component {
 		})
 	}
 
+	handleBorrowing = () => {
+		console.log('This is for borrowing submission')
+	}
+
+	handleReturning = () => {
+		console.log('This is for returning submission')
+	}
+
+	handleReservation = () => {
+		console.log('This is for reservations submission')
+	}
+
 	// componentDidMount() {
 	// 	fetch('http://localhost:3001/borrowed-equipments')
 	// 		.then(response => response.json())
@@ -62,8 +78,15 @@ class App extends Component {
 	getContext = () => ({
 		auth: this.state.auth,
 		open: this.state.open,
+		dateOfUse: this.state.dateOfUse,
+		purpose: this.state.purpose,
+		attachments: this.state.attachments,
+		historyLogs: this.state.historyLogs,
 		handleClick: this.handleClick,
 		handleSubmit: this.handleSubmit,
+		handleBorrowing: this.handleBorrowing,
+		handleReturning: this.handleReturning,
+		handleReservation: this.handleReservation,
 		handleDrawerOpen: this.handleDrawerOpen,
 		handleDrawerClose: this.handleDrawerClose
 	})

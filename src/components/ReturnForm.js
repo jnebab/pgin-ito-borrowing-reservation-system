@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import SignIn from './SignIn'
+import Form from './Form'
 import { Consumer } from '../Context'
 
 export default props => {
@@ -7,7 +8,7 @@ export default props => {
 		<Consumer>
 			{({auth}) =>
 				<Fragment>
-					{auth ? <h1>This will provide the Return Form</h1> : <SignIn />}
+					{auth ? <Form toReturn/> : <SignIn />}
 				</Fragment>
 			}
 		</Consumer>

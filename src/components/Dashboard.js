@@ -2,9 +2,9 @@ import React from 'react'
 import { Paper, Grid } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
 
-import RecentlyBorrowed from './dashboardcomponents/RecentlyBorrowed'
-import RecentlyReturned from './dashboardcomponents/RecentlyReturned'
-import ReservationRequests from './dashboardcomponents/ReservationRequests'
+import RecentlyBorrowed from './DashboardComponents/RecentlyBorrowed'
+import RecentlyReturned from './DashboardComponents/RecentlyReturned'
+import ReservationRequests from './DashboardComponents/ReservationRequests'
 
 import styles from './style/styles'
 
