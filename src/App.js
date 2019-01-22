@@ -12,28 +12,33 @@ import { Provider } from './Context'
 const db = firebase.firestore()
 
 class App extends Component {
-	state = {
-		auth: true,
-		open: false,
-		equipmentBrand: '',
-		equipmentModel: '',
-		equipmentSerial: '',
-		equipmentType: '',
-		equipmentStatus: '',
-		borrowersName: '',
-		borrowersDept: '',
-		selectedItem: '',
-		email: '',
-		password: '',
-		dateOfUse: '',
-		releasedDate: '',
-		returnedDate: '',
-		issuerName: '',
-		receiverName: '',
-		purpose: '',
-		attachments: '',
-		historyLogs: [],
-		itemList: {}
+	constructor(props) {
+		super(props)
+		this.state = {
+			auth: true,
+			open: false,
+			equipmentBrand: '',
+			equipmentModel: '',
+			equipmentSerial: '',
+			equipmentType: '',
+			equipmentStatus: '',
+			borrowersName: '',
+			borrowersDept: '',
+			selectedItem: '',
+			email: '',
+			password: '',
+			dateOfUse: '',
+			releasedDate: '',
+			returnedDate: '',
+			issuerName: '',
+			receiverName: '',
+			purpose: '',
+			attachments: '',
+			historyLogs: [],
+			itemList: {}
+		}
+
+		this.handleAddEquipment = this.handleAddEquipment.bind(this)
 	}
 
 	handleDrawerOpen = () => {
@@ -73,8 +78,34 @@ class App extends Component {
 		})
 	}
 	
-	handleAddEquipment = (e, data) => {
-		console.log(data)
+	async handleAddEquipment(e, data) {
+		const brand = data.get('equipmentBrand')
+		const model = data.get('equipmentModel')
+		const serial = data.get('equipmentSerial')
+		const type = data.get('equipmentType')
+		const eqRef = db.collection("equipments")
+		const size = await eqRef.get().then(snapshot => snapshot.docs.length)
+		const zeroes = size < 10 ? '00' : size > 10 && size < 100 ? '0' : size
+		const documentId = `eq-${zeroes}${size+1}`
+		eqRef.doc(documentId).set({
+			brand,
+			model,
+			serial,
+			type,
+			eqStatus: "available"
+		})
+		.then(() => {
+			console.log("Document successfully written!")
+			this.setState({
+				equipmentBrand: '',
+				equipmentModel: '',
+				equipmentSerial: '',
+				equipmentType: '',
+			})
+		})
+		.catch(error => {
+			console.error("Error writing document: ", error)
+		})
 	}
 
 	handleBorrowing = () => {
@@ -93,8 +124,8 @@ class App extends Component {
 		db.settings({
 			timestampsInSnapshots: true
 		})
-		const itemRef = db.collection('Equipments')
-		console.log(itemRef.eqbrand)
+		const eqRef = db.collection('equipments')
+		console.log(eqRef.get().then(snapshot => snapshot.docs[0]))
 	}
 
 	getContext = () => ({
