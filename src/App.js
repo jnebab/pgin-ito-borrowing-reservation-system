@@ -9,17 +9,31 @@ import MainApp from './components/MainApp'
 import firebase from './components/Firestore'
 import { Provider } from './Context'
 
+const db = firebase.firestore()
+
 class App extends Component {
 	state = {
 		auth: true,
 		open: false,
-		itemList: {},
+		equipmentBrand: '',
+		equipmentModel: '',
+		equipmentSerial: '',
+		equipmentType: '',
+		equipmentStatus: '',
+		borrowersName: '',
+		borrowersDept: '',
+		selectedItem: '',
 		email: '',
 		password: '',
 		dateOfUse: '',
+		releasedDate: '',
+		returnedDate: '',
+		issuerName: '',
+		receiverName: '',
 		purpose: '',
 		attachments: '',
-		historyLogs: []
+		historyLogs: [],
+		itemList: {}
 	}
 
 	handleDrawerOpen = () => {
@@ -34,7 +48,6 @@ class App extends Component {
 	handleSubmit = (e, data) => {
 		e.preventDefault()
 		console.log(`Email: ${data.get('email')}, Password: ${data.get('password')}`)
-		const db = firebase.firestore()
 		db.settings({
 			timestampsInSnapshots: true
 		})
@@ -46,10 +59,22 @@ class App extends Component {
 		}
 	}
 
+	handleChange = e => {
+		const { name, value } = e.target
+
+		this.setState({
+			[name]: value
+		})
+	}
+
 	handleClick = () => {
 		this.setState({
 			auth: false
 		})
+	}
+	
+	handleAddEquipment = (e, data) => {
+		console.log(data)
 	}
 
 	handleBorrowing = () => {
@@ -64,26 +89,21 @@ class App extends Component {
 		console.log('This is for reservations submission')
 	}
 
-	// componentDidMount() {
-	// 	fetch('http://localhost:3001/borrowed-equipments')
-	// 		.then(response => response.json())
-	// 		.then(response => {
-	// 			console.log(response)
-	// 			this.setState({
-	// 				itemList: response
-	// 			})
-	// 		})
-	// }
-	
+	componentDidMount() {
+		db.settings({
+			timestampsInSnapshots: true
+		})
+		const itemRef = db.collection('Equipments')
+		console.log(itemRef.eqbrand)
+	}
+
 	getContext = () => ({
-		auth: this.state.auth,
-		open: this.state.open,
-		dateOfUse: this.state.dateOfUse,
-		purpose: this.state.purpose,
-		attachments: this.state.attachments,
+		...this.state,
 		historyLogs: this.state.historyLogs,
+		handleChange: this.handleChange,
 		handleClick: this.handleClick,
 		handleSubmit: this.handleSubmit,
+		handleAddEquipment: this.handleAddEquipment,
 		handleBorrowing: this.handleBorrowing,
 		handleReturning: this.handleReturning,
 		handleReservation: this.handleReservation,

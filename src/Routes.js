@@ -12,6 +12,7 @@ import History from '@material-ui/icons/History'
 import DashboardContainer from './components/DashboardContainer'
 import AvailableEquipments from './components/AvailableEquipments'
 import BorrowedEquipmentsContainer from './components/BorrowedEquipmentsContainer'
+import AddEquipmentContainer from './components/AddEquipmentContainer'
 import BorrowingContainer from './components/BorrowingContainer'
 import ReturnForm from './components/ReturnForm'
 import ReservationForm from './components/ReservationForm'
@@ -37,6 +38,12 @@ const routes = [
 		path: '/available-equipments',
 		icon: <ListItemIcon><CheckCircle /></ListItemIcon>,
 		main: () => <AvailableEquipments />
+	},
+	{
+		name: 'Add Equipment Form',
+		path: '/add-equipment-form',
+		icon: <ListItemIcon><Assignment /></ListItemIcon>,
+		main: () => <AddEquipmentContainer />
 	},
 	{
 		name: 'Borrow Form',

@@ -7,7 +7,7 @@ export default props => {
 		<Consumer>
 			{({auth}) => 
 				<Fragment>
-					{auth ? <h1>This will display the Calendar</h1> : <SignIn />}
+					{auth ? <h1>Coming Soon.</h1> : <SignIn />}
 				</Fragment>
 			}
 		</Consumer>

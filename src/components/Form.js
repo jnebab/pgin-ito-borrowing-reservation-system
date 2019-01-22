@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { TextField, Button, Card, CardContent } from '@material-ui/core'
+import { TextField, Button, Card, CardContent, Select, MenuItem } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
 import { Consumer } from '../Context'
 
@@ -22,28 +22,31 @@ const styles = theme => ({
 })
 
 class Form extends Component {
-	handleChange = e => {
-		const { name, value } = e.target
 
-		this.setState({
-			[name]: value
-		})
+	mainFormSubmit = e => {
+		const { handleBorrowing, handleReturning, handleReservation } = this.props
+		e.preventDefault()
+		const data = new FormData(e.target)
+		if(this.props.forBorrowing) {
+			handleBorrowing(e, data)
+		}
+		else if(this.props.toReturn) {
+			handleReturning(e, data)
+		}
+		else if(this.props.forReservation) {
+			handleReservation(e, data)
+		}
 	}
 
 	render() {
 		const { classes } = this.props
-		const date = new Date()
-		const today = date.getDate()
-		const month = date.getMonth() + 1
-		const year = date.getFullYear()
-		const fullDate = `${month} ${today}, ${year}`
 		const toReturn = this.props.toReturn || null
 		const forBorrowing = this.props.forBorrowing || null
 		const forReservation = this.props.forReservation
 
 		return (
 			<Consumer>
-				{({auth, handleBorrowing, handleReturning, handleReservation, purpose, attachments}) => 
+				{({borrowersName, borrowersDept, selectedItem, dateOfUse, releasedDate, returnedDate, issuerName, receiverName, purpose, attachments, handleChange}) => 
 					<div style={{
 						display:'flex',
 						alignItems: 'center',
@@ -56,32 +59,64 @@ class Form extends Component {
 										display: 'flex',
 										flexDirection: 'column'
 									}}
+									onSubmit={this.mainFormSubmit}
 								>
 									<TextField
 										id="outlined-text-input"
 										label="Name of Borrower"
 										className={classes.textField}
 										type="text"
+										value={borrowersName}
 										name="borrowersName"
 										autoComplete="borrowersName"
 										margin="normal"
 										variant="outlined"
 										fullWidth
 										disabled={toReturn}
+										onChange={handleChange}
 									/>
+									<TextField
+										id="outlined-text-input"
+										label="Department of Borrower"
+										className={classes.textField}
+										type="text"
+										value={borrowersDept}
+										name="borrowersDept"
+										autoComplete="borrowersDept"
+										margin="normal"
+										variant="outlined"
+										fullWidth
+										disabled={toReturn}
+										onChange={handleChange}
+									/>
+									<Select
+										value={selectedItem}
+										onChange={handleChange}
+										fullWidth
+										disabled={toReturn}
+										variant="outlined"
+										className={classes.textField}
+									>
+										{/* {itemList.array.forEach((item, index) => 
+											<MenuItem key={index} value={item}>
+												{item}
+											</MenuItem>)
+										} */}
+									</Select>
 									<TextField
 										variant='outlined'
 										id="date"
 										label="Date of Use"
 										type="date"
+										value={dateOfUse}
 										name="dateOfUse"
-										defaultValue={fullDate}
 										className={classes.textField}
 										InputLabelProps={{
 											shrink: true,
 										}}
 										fullWidth
 										disabled={toReturn}
+										onChange={handleChange}
 									/>
 									<TextField
 										id="filled-multiline-flexible"
@@ -90,7 +125,7 @@ class Form extends Component {
 										rowsMax="3"
 										name="purpose"
 										value={purpose}
-										onChange={this.handleChange}
+										onChange={handleChange}
 										className={classes.textField}
 										margin="normal"
 										helperText="Why are you borrowing this equipment?"
@@ -105,7 +140,7 @@ class Form extends Component {
 										multiline
 										rowsMax="3"
 										value={attachments}
-										onChange={this.handleChange}
+										onChange={handleChange}
 										className={classes.textField}
 										margin="normal"
 										helperText="What are the other things needed to use this equipment?"
@@ -121,13 +156,15 @@ class Form extends Component {
 											label="Date of Release"
 											type="date"
 											name="releasedDate"
-											defaultValue={fullDate}
+											value={releasedDate}
+											// defaultValue={fullDate}
 											className={classes.textField}
 											InputLabelProps={{
 												shrink: true,
 											}}
 											fullWidth
 											disabled={toReturn}
+											onChange={handleChange}
 										/>
 										<TextField
 											id="outlined-text-input"
@@ -135,11 +172,13 @@ class Form extends Component {
 											className={classes.textField}
 											type="text"
 											name="issuerName"
-											autoComplete="BorrowersName"
+											value={issuerName}
+											autoComplete="issuerName"
 											margin="normal"
 											variant="outlined"
 											fullWidth
 											disabled={toReturn}
+											onChange={handleChange}
 										/>
 										</Fragment>
 									}
@@ -151,12 +190,14 @@ class Form extends Component {
 												label="Date of Return"
 												type="date"
 												name="returnedDate"
-												defaultValue={fullDate}
+												value={returnedDate}
+												// defaultValue={fullDate}
 												className={classes.textField}
 												InputLabelProps={{
 													shrink: true,
 												}}
 												fullWidth
+												onChange={handleChange}
 											/>
 											<TextField
 												id="outlined-text-input"
@@ -164,18 +205,20 @@ class Form extends Component {
 												className={classes.textField}
 												type="text"
 												name="receiverName"
+												value={receiverName}
 												autoComplete="receiverName"
 												margin="normal"
 												variant="outlined"
 												fullWidth
+												onChange={handleChange}
 											/>
 										</Fragment>
 									}
 									<Button
-										variant="raised"
+										type="submit"
+										variant="contained"
 										color="primary"
 										fullWidth
-										onClick={forBorrowing ? handleBorrowing : toReturn ? handleReturning : handleReservation}
 									>
 										{forReservation ? 'Make Request' : 'Submit'}
 									</Button>

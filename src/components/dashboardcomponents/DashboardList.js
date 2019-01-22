@@ -14,7 +14,7 @@ const styles = theme => ({
 })
 
 export default withStyles(styles)(props => {
-	const { classes, isBorrow, isReturn, isReserve } = props
+	const { classes, isReserve } = props
 
 	return (
 		<List>
