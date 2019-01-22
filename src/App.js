@@ -120,12 +120,13 @@ class App extends Component {
 		console.log('This is for reservations submission')
 	}
 
-	componentDidMount() {
+	async componentDidMount() {
 		db.settings({
 			timestampsInSnapshots: true
 		})
 		const eqRef = db.collection('equipments')
-		console.log(eqRef.get().then(snapshot => snapshot.docs[0]))
+		const data = await eqRef.get().then(snapshot => snapshot.docs.map(snap => snap))
+		console.log(data)
 	}
 
 	getContext = () => ({
