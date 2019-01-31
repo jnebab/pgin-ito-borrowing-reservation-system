@@ -9,7 +9,6 @@ import AssignmentTurnedIn from '@material-ui/icons/AssignmentTurnedIn'
 import CalendarToday from '@material-ui/icons/CalendarToday'
 import History from '@material-ui/icons/History'
 
-import DashboardContainer from './components/DashboardContainer'
 import AvailableEquipments from './components/AvailableEquipments'
 import BorrowedEquipmentsContainer from './components/BorrowedEquipmentsContainer'
 import AddEquipmentContainer from './components/AddEquipmentContainer'
@@ -21,15 +20,9 @@ import HistoryLog from './components/HistoryLog'
 
 const routes = [
 	{
-		name: 'Dashboard',
-		path: '/',
-		exact: true,
-		icon: <ListItemIcon><DashboardIcon /></ListItemIcon>,
-		main: () => <DashboardContainer />
-	},
-	{
 		name: 'Borrowed Equipments',
-		path: '/borrowed-equipments',
+		exact: true,
+		path: '/',
 		icon: <ListItemIcon><AccessAlarmIcon /></ListItemIcon>,
 		main: () => <BorrowedEquipmentsContainer />
 	},

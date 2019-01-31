@@ -23,7 +23,7 @@ class AddEquipment extends Component {
 		const { handleAddEquipment } = this.props
 		e.preventDefault()
 		const data = new FormData(e.target)
-		handleAddEquipment(e, data)
+		handleAddEquipment(data)
 	}
 
 	render() {

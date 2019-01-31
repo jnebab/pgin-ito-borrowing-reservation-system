@@ -9,7 +9,7 @@ import MainApp from './components/MainApp'
 import firebase from './components/Firestore'
 import { Provider } from './Context'
 
-const db = firebase.firestore()
+let db = null
 
 class App extends Component {
 	constructor(props) {
@@ -35,7 +35,8 @@ class App extends Component {
 			purpose: '',
 			attachments: '',
 			historyLogs: [],
-			itemList: {}
+			itemList: [],
+			labelWidth: 0
 		}
 
 		this.handleAddEquipment = this.handleAddEquipment.bind(this)
@@ -78,17 +79,17 @@ class App extends Component {
 		})
 	}
 	
-	async handleAddEquipment(e, data) {
-		const brand = data.get('equipmentBrand')
+	async handleAddEquipment(data) {
+		const name = data.get('equipmentBrand')
 		const model = data.get('equipmentModel')
 		const serial = data.get('equipmentSerial')
 		const type = data.get('equipmentType')
 		const eqRef = db.collection("equipments")
-		const size = await eqRef.get().then(snapshot => snapshot.docs.length)
-		const zeroes = size < 10 ? '00' : size > 10 && size < 100 ? '0' : size
-		const documentId = `eq-${zeroes}${size+1}`
-		eqRef.doc(documentId).set({
-			brand,
+		const checkId = await eqRef.get().then(snapshot => snapshot.docs.map(snap => snap.id === name))
+		console.log(checkId)
+		const altName = checkId && `${name}b`
+		eqRef.doc(checkId ? altName : name).set({
+			name,
 			model,
 			serial,
 			type,
@@ -108,25 +109,50 @@ class App extends Component {
 		})
 	}
 
-	handleBorrowing = () => {
-		console.log('This is for borrowing submission')
+	async handleBorrowing(data){
+		const equipmentName = data.get('selectedItem')
+		// const borrowersName = data.get('borrowersName')
+		// const borrowersDept = data.get('borrowersDept')
+		// const dateOfUse = data.get('dateOfUse')
+		// const dateReleased = data.get('releasedDate')
+		// const dateReturned = data.get('returnedDate')
+		// const issuerName = data.get('issuerName')
+		// const receiverName = data.get('receiverName')
+		// const purpose = data.get('purpose')
+		// const attachments = data.get('attachments')
+		console.log(`eq: ${equipmentName}`)
+		const eqRef = db.collection("equipments")
+		const dt = await eqRef.get()
+			.then(snapshot => snapshot.docs.map(snap => snap.data()))
+		const index = await dt.map((equipment, i) => {
+			if(equipment.unit === equipmentName){
+				return(i)
+			}
+		})
+		const zeroes = index < 10 ? '00' : index > 10 && index < 100 ? '0' : index
+		const docId = `eq-${zeroes}${index+1}`
+		console.log(docId.split(",", ""))
 	}
 
-	handleReturning = () => {
-		console.log('This is for returning submission')
-	}
+	// async handleReturning = data => {
+	// 	console.log('This is for returning submission')
+	// }
 
-	handleReservation = () => {
-		console.log('This is for reservations submission')
-	}
+	// async handleReservation = data => {
+	// 	console.log('This is for reservations submission')
+	// }
 
 	async componentDidMount() {
+		db = firebase.firestore()
 		db.settings({
 			timestampsInSnapshots: true
 		})
 		const eqRef = db.collection('equipments')
-		const data = await eqRef.get().then(snapshot => snapshot.docs.map(snap => snap))
-		console.log(data)
+		const data = await eqRef.get().then(snapshot => snapshot.docs.map(snap => snap.data()))
+		console.log(data.map(item => item))
+		this.setState({
+			itemList: data
+		})
 	}
 
 	getContext = () => ({
